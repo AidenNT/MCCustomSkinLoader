@@ -48,11 +48,9 @@ public class SkmedixAPI implements JsonAPILoader.IJsonAPI {
 
     @Override
     public String toJsonUrl(String root, String username) {
-        CustomSkinLoader.logger.info("Method Invode toJsonUrl");
         String uuid = String.valueOf(getOfflineUUID(username));
         String styledUuid = uuid.replace("-", "");
         String PREFIX = ".json";
-        CustomSkinLoader.logger.info("Loading Skmedix API for UUID: " + styledUuid, root + styledUuid + PREFIX, username);
         return root + styledUuid + PREFIX;
     }
 
@@ -72,7 +70,6 @@ public class SkmedixAPI implements JsonAPILoader.IJsonAPI {
 
         } catch (Exception e) {
             // sk api returns html 404 response when profile not found
-            CustomSkinLoader.logger.warning("Failed to load Skmedix API for UUID: " + root);
             return null;
         }
     }
