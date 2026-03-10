@@ -27,7 +27,7 @@ public class SkmedixAPI implements JsonAPILoader.IJsonAPI {
 
         @Override
         public int getPriority() {
-            return 10;
+            return 500;
         }
 
         @Override
