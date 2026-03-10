@@ -21,6 +21,7 @@ public class PluginLoader {
             new GameProfileLoader(),
             new MojangAPILoader(),
             new LegacyLoader(),
+            new JsonAPILoader(new SkmedixAPI()),
             new JsonAPILoader(new CustomSkinAPI()),
             new JsonAPILoader(new CustomSkinAPIPlus()),
             new JsonAPILoader(new UniSkinAPI()),

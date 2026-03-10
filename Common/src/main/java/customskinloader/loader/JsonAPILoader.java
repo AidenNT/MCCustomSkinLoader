@@ -42,6 +42,10 @@ public class JsonAPILoader implements ICustomSkinLoaderPlugin, ProfileLoader.IPr
         UserProfile toUserProfile(String root, String json, boolean local);
 
         String getName();
+
+        default String getUserAgent() {
+            return null;
+        }
     }
 
     public static class ErrorProfile {
@@ -109,6 +113,7 @@ public class JsonAPILoader implements ICustomSkinLoaderPlugin, ProfileLoader.IPr
             json = IOUtils.toString(Files.newInputStream(jsonFile.toPath()), StandardCharsets.UTF_8);
         } else {
             try {
+                ssp.userAgent = jsonAPI.getUserAgent();
                 HttpRequestUtil.HttpResponce responce = HttpRequestUtil
                         .makeHttpRequest(new HttpRequestUtil.HttpRequest(jsonUrl).setCacheTime(90)
                                 .setUserAgent(ssp.userAgent).setPayload(this.jsonAPI.getPayload(ssp, username)));
